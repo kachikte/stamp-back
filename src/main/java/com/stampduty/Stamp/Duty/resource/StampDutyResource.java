@@ -1,21 +1,31 @@
 package com.stampduty.Stamp.Duty.resource;
 
+import com.stampduty.Stamp.Duty.service.ReportService;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
+//@CrossOrigin(origins = "http://localhost:4200")
 public class StampDutyResource {
+
+    @Autowired
+    private ReportService reportService;
 
     Logger logger = LoggerFactory.getLogger(StampDutyResource.class);
 
     @GetMapping("/getTradingMembersEx")
-    public Object getTradingMembersEx(@RequestParam("marketCode") String marketCode, @RequestParam("returnType") String returnType) {
+    public Object getTradingMembersEx(
+            @RequestParam("marketCode") String marketCode,
+            @RequestParam("returnType") String returnType) {
         String url = "http://50.116.33.99:8080/AnalyticsServices/tradeContractNotes/getTradingMembers?marketCode=" + marketCode + "&returnType=" + returnType;
         RestTemplate restTemplate = new RestTemplate();
         Object tradingMembers = restTemplate.getForObject(url, Object.class);
@@ -26,7 +36,13 @@ public class StampDutyResource {
     }
 
     @GetMapping("/stakeholderRegistration/")
-    public Object stakeholderRegistration(@RequestParam("marketCode") String marketCode, @RequestParam("requesterCode") String requesterCode, @RequestParam("passWord") String passWord, @RequestParam("confirmPassWord") String confirmPassWord, @RequestParam("secretQuestion") String secretQuestion, @RequestParam("answer") String answer) {
+    public Object stakeholderRegistration(
+            @RequestParam("marketCode") String marketCode,
+            @RequestParam("requesterCode") String requesterCode,
+            @RequestParam("passWord") String passWord,
+            @RequestParam("confirmPassWord") String confirmPassWord,
+            @RequestParam("secretQuestion") String secretQuestion,
+            @RequestParam("answer") String answer) {
 
         String url = "http://50.116.33.99:8080/AnalyticsServices/tradeContractNotes/register?marketCode=" + marketCode + "&requesterCode=" + requesterCode + "&passWord=" + passWord + "&confirmPassWord=" + confirmPassWord + "&secretQuestion=" + secretQuestion + "&answer=" + answer;
         RestTemplate restTemplate = new RestTemplate();
@@ -36,7 +52,10 @@ public class StampDutyResource {
     }
 
     @GetMapping("/getStakeHolderProfile/")
-    public Object getStakeHolderProfile(@RequestParam("emailAddress") String emailAddress, @RequestParam("password") String password, @RequestParam("returnType") String returnType) {
+    public Object getStakeHolderProfile(
+            @RequestParam("emailAddress") String emailAddress,
+            @RequestParam("password") String password,
+            @RequestParam("returnType") String returnType) {
         String url = "http://50.116.33.99:8080/AnalyticsServices/tradeContractNotes/getStakeHolderProfile?emailAddress=" + emailAddress + "&password=" + password + "&returnType=" + returnType;
         RestTemplate restTemplate = new RestTemplate();
         Object stakeHolderProfile = restTemplate.getForObject(url, Object.class);
@@ -45,7 +64,11 @@ public class StampDutyResource {
     }
 
     @GetMapping("/getContractNotesTaxable/")
-    public Object getContractNotesTaxable(@RequestParam("emailAddress") String emailAddress, @RequestParam("requesterCode") String requesterCode, @RequestParam("marketCode") String marketCode, @RequestParam("monthAndYear") String monthAndYear) {
+    public Object getContractNotesTaxable(
+            @RequestParam("emailAddress") String emailAddress,
+            @RequestParam("requesterCode") String requesterCode,
+            @RequestParam("marketCode") String marketCode,
+            @RequestParam("monthAndYear") String monthAndYear) {
         String url = "http://50.116.33.99:8080/AnalyticsServices/tradeContractNotes/getContractNotesTaxable?emailAddress=" + emailAddress + "&requesterCode=" + requesterCode + "&marketCode=" + marketCode + "&monthAndYear=" + monthAndYear;
         RestTemplate restTemplate = new RestTemplate();
         Object contractNotesTaxable = restTemplate.getForObject(url, Object.class);
@@ -54,7 +77,13 @@ public class StampDutyResource {
     }
 
     @GetMapping("/getPaymentDetails/")
-    public void getPaymentDetails(@RequestParam("emailAddress") String emailAddress, @RequestParam("requesterCode") String requesterCode, @RequestParam("marketCode") String marketCode, @RequestParam("monthAndYear") String monthAndYear, @RequestParam("paymentReference") String paymentReference) {
+    public void getPaymentDetails(
+            @RequestParam("emailAddress") String emailAddress,
+            @RequestParam("requesterCode") String requesterCode,
+            @RequestParam("marketCode") String marketCode,
+            @RequestParam("monthAndYear") String monthAndYear,
+            @RequestParam("paymentReference") String paymentReference,
+            @RequestParam("paymentValue") double paymentValue) {
 //        String url = "http://50.116.33.99:8080/AnalyticsServices/tradeContractNotes/getContractNotesTaxable?emailAddress=" + emailAddress + "&requesterCode=" + requesterCode + "&marketCode=" + marketCode + "&monthAndYear=" + monthAndYear;
 //        RestTemplate restTemplate = new RestTemplate();
 //        Object contractNotesTaxable = restTemplate.getForObject(url, Object.class);
@@ -68,6 +97,12 @@ public class StampDutyResource {
         logger.info("This is the marketCode {}", marketCode);
         logger.info("This is the monthAndYear {}", monthAndYear);
         logger.info("This is the paymentReference {}", paymentReference);
+        logger.info("This is the paymentValue {}", paymentValue);
+    }
+
+    @GetMapping("/getReport/{reportFormat}")
+    public String getReport(@PathVariable String reportFormat) throws JRException, IOException {
+        return reportService.exportReport(reportFormat);
     }
 
 }

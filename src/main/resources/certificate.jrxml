@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Stampduty_Sample" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
+    <property name="template.type" value="columnar"/>
+    <style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false"/>
+    <style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+    <style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+    <style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#F0EFEF"/>
+        </conditionalStyle>
+    </style>
+    <field name="certificateNumber" class="java.lang.String">
+    </field>
+    <field name="instrument" class="java.lang.String">
+    </field>
+    <field name="parties" class="java.lang.String">
+    </field>
+    <field name="consideration" class="java.lang.String">
+    </field>
+    <field name="stampDutyPaid" class="java.lang.String">
+    </field>
+    <field name="ISSD" class="java.lang.String">
+    </field>
+    <field name="beneficiary" class="java.lang.String">
+    </field>
+    <field name="beneficiaryTin" class="java.lang.String">
+    </field>
+    <field name="description" class="java.lang.String">
+    </field>
+    <field name="dateOfExecution" class="java.lang.String">
+    </field>
+    <field name="dateOfFiling" class="java.lang.String">
+    </field>
+    <field name="issuanceDate" class="java.lang.String">
+    </field>
+    <field name="originatingOffice" class="java.lang.String">
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="191" splitType="Stretch">
+            <staticText>
+                <reportElement style="Title" x="70" y="120" width="400" height="40" uuid="f49d68fd-a2c7-44ec-a5fc-9300d10c85a1"/>
+                <textElement textAlignment="Center">
+                    <font size="30" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Certificate of Stamp Duty]]></text>
+            </staticText>
+            <image>
+                <reportElement x="180" y="20" width="153" height="80" uuid="818dabec-9c4a-4b1a-824a-3f2c3fdcd5dc"/>
+                <imageExpression><![CDATA["/Users/princesannishuaibu/JaspersoftWorkspace/images/FIRS-removebg-preview.png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="380" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="0" width="132" height="20" forecolor="#000000" uuid="58460d03-37d7-40c5-9cc7-535e19dcf188"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Certificate Number:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="0" width="282" height="18" uuid="203c8028-ef0e-43a7-a829-ed2c610195d4"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{certificateNumber}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="19" width="132" height="20" forecolor="#000000" uuid="1fb34225-5bde-41f1-8ad6-bb8ef6f4cfc3"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Instrument:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="20" width="282" height="18" uuid="6ec441fa-0080-408f-96ec-5628fd4be9bb"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{instrument}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="38" width="132" height="20" forecolor="#000000" uuid="7f76ec3f-db80-4ab1-8a7c-b57b42652b13"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Parties:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="40" width="282" height="18" uuid="146ee911-5677-4e76-a795-401a6e5494e1"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{parties}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="4" y="58" width="248" height="20" forecolor="#000000" uuid="1a0a6df3-fe37-4a5d-9786-bc1c26b888d6"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Consideration (Transaction Amount):	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="60" width="282" height="18" uuid="a3608df1-33a8-4d3a-bbaa-caea22c34294"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{consideration}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="79" width="132" height="20" forecolor="#000000" uuid="dd0e1322-4313-4dcc-a432-2af4e2a4b649"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Stamp Duty Paid:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="80" width="282" height="18" uuid="d9311847-58d1-48df-89e2-37661cbef253"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{stampDutyPaid}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="4" y="99" width="248" height="20" forecolor="#000000" uuid="f9046986-080f-4fd2-9e84-8714514f9791"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[ISDS Payment Reference Number:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="100" width="282" height="18" uuid="a285fe5a-7209-414c-a2c0-13899f29f2fd"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ISSD}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="119" width="132" height="20" forecolor="#000000" uuid="9f6bd1ba-98f5-498e-af9a-5d4ab45ff88c"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Beneficiary:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="120" width="282" height="18" uuid="69afd61c-1234-4766-ab66-c764644b1500"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{beneficiary}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="139" width="132" height="20" forecolor="#000000" uuid="7cc91293-cbb0-4037-a020-3c32938035f3"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Beneficiary's TIN:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="140" width="282" height="18" uuid="59d87077-cd96-47c5-bcf1-6f2ac948a696"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{beneficiaryTin}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="159" width="132" height="20" forecolor="#000000" uuid="c6cb5455-e2f7-4458-836d-edd1526d80b1"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Description:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="160" width="282" height="18" uuid="b3409ab6-26d4-4bf3-880c-61dd26c23dd3"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="179" width="132" height="20" forecolor="#000000" uuid="5377fdaa-2753-4321-b95b-fee749d537d7"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Date of Execution:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="180" width="282" height="18" uuid="7d1d25c9-04b2-4472-a017-af8d1ef5523a"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dateOfExecution}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="199" width="132" height="20" forecolor="#000000" uuid="acb6fccc-242f-4c82-bbdc-72b89e2601e9"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Date of Filing:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="200" width="282" height="18" uuid="ba8c57ef-e048-453b-ac4b-285c947762d0"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dateOfFiling}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="219" width="132" height="20" forecolor="#000000" uuid="29c47ad2-c704-4bb4-b8b6-db1aef9f92f6"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Issuance Date:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="220" width="282" height="18" uuid="846dfcd7-33c4-48c5-a24c-7d09930f8c78"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{issuanceDate}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="120" y="239" width="132" height="20" forecolor="#000000" uuid="7c2e44d6-f07c-47e9-b7e9-55a74d3d4c3f"/>
+                <textElement textAlignment="Right">
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Originating Office:	]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="270" y="240" width="282" height="18" uuid="7b93b5db-92d6-4f5a-8cd9-0bb3d470b84c"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{originatingOffice}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="100" y="350" width="360" height="21" uuid="faf33cf5-aad8-44f0-96f6-5233521962b1"/>
+                <text><![CDATA[You can verify this Certificate at https://stampduty.gov.ng/verification]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="7" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fab082df-3ca0-43ac-900e-4da3f8b5a45d"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineColor="#999999"/>
+                </graphicElement>
+            </line>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="13" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>
