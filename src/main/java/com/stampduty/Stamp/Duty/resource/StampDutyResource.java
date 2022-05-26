@@ -1,5 +1,6 @@
 package com.stampduty.Stamp.Duty.resource;
 
+import com.stampduty.Stamp.Duty.dto.CertificateDataDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.service.ReportService;
 import net.sf.jasperreports.engine.JRException;
@@ -101,9 +102,9 @@ public class StampDutyResource {
         logger.info("This is the paymentValue {}", paymentValue);
     }
 
-    @GetMapping("/getReport/{reportFormat}")
-    public StampDutyDTO getReport(@PathVariable String reportFormat) throws JRException, IOException {
-        return reportService.exportReport(reportFormat);
+    @PostMapping("/getReport/{reportFormat}")
+    public StampDutyDTO getReport(@PathVariable String reportFormat, @RequestBody CertificateDataDto certificateDataDto) throws JRException, IOException {
+        return reportService.exportReport(reportFormat, certificateDataDto);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.stampduty.Stamp.Duty.service;
 
 import com.stampduty.Stamp.Duty.CertificateParams;
+import com.stampduty.Stamp.Duty.dto.CertificateDataDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -18,5 +19,5 @@ import java.util.*;
 
 public interface ReportService {
 
-    StampDutyDTO exportReport(String reportFormat) throws IOException, JRException;
+    StampDutyDTO exportReport(String reportFormat, CertificateDataDto certificateDataDto) throws IOException, JRException;
 }

@@ -1,6 +1,7 @@
 package com.stampduty.Stamp.Duty.serviceImpl;
 
 import com.stampduty.Stamp.Duty.CertificateParams;
+import com.stampduty.Stamp.Duty.dto.CertificateDataDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.service.ReportService;
 import com.stampduty.Stamp.Duty.service.StampDutyFileService;
@@ -34,7 +35,7 @@ public class ReportServiceImpl implements ReportService {
 
 
     @Override
-    public StampDutyDTO exportReport(String reportFormat) throws IOException, JRException {
+    public StampDutyDTO exportReport(String reportFormat, CertificateDataDto certificateDataDto) throws IOException, JRException {
 
         //Content types
 
@@ -46,19 +47,19 @@ public class ReportServiceImpl implements ReportService {
         final String fileNamePdf = File.createTempFile("adddadha", ".pdf").getAbsolutePath();
         List<CertificateParams> certificateParamsList = new ArrayList<>();
         CertificateParams certificateParams = new CertificateParams(
-                "a",
-                "a",
-                "a",
-                "a",
-                "a",
-                "a",
-                "a",
-                "a",
-                "a",
-                "A",
-                "A",
-                "a",
-                "a"
+                certificateDataDto.getCertificateNumber(),
+                certificateDataDto.getInstrument(),
+                certificateDataDto.getParties(),
+                certificateDataDto.getConsideration(),
+                certificateDataDto.getStampDutyPaid(),
+                certificateDataDto.getIssd(),
+                certificateDataDto.getBeneficiary(),
+                certificateDataDto.getBeneficiaryTin(),
+                certificateDataDto.getDecription(),
+                certificateDataDto.getDateOfExecution(),
+                certificateDataDto.getDateOfFiling(),
+                certificateDataDto.getIssuanceDate(),
+                certificateDataDto.getOriginatingOffice()
         );
         certificateParamsList.add(certificateParams);
         //load file
