@@ -35,6 +35,11 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public StampDutyDTO exportReport(String reportFormat) throws IOException, JRException {
+
+        //Content types
+
+        //https://social.msdn.microsoft.com/Forums/en-US/bbfb2a32-b7eb-443e-a32b-b9be14b98a10/response-content-type-for-all-type-of-file-and-for-all-browser?forum=aspgettingstarted
+
         String path = "../../";
         StampDutyDTO stampDutyDTO = new StampDutyDTO();
         final String fileNameHtml = File.createTempFile("adddadha", ".html").getAbsolutePath();
