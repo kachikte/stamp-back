@@ -1,5 +1,6 @@
 package com.stampduty.Stamp.Duty.resource;
 
+import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.service.ReportService;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
@@ -101,7 +102,7 @@ public class StampDutyResource {
     }
 
     @GetMapping("/getReport/{reportFormat}")
-    public String getReport(@PathVariable String reportFormat) throws JRException, IOException {
+    public StampDutyDTO getReport(@PathVariable String reportFormat) throws JRException, IOException {
         return reportService.exportReport(reportFormat);
     }
 
