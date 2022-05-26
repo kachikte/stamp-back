@@ -29,20 +29,33 @@ public class StampDutyFileResource {
     Logger logger = LoggerFactory.getLogger(StampDutyResource.class);
 
 
-    @PostMapping("/upload-file")
-    public ResponseEntity<StampDutyResponseEntity> uploadFiles(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        StampDutyDTO stampDutyDTO = stampDutyFileService.uploadFile(file);
+//    @PostMapping("/upload-file")
+//    public ResponseEntity<StampDutyResponseEntity> uploadFiles(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+//        StampDutyDTO stampDutyDTO = stampDutyFileService.uploadFile(file);
+//
+//        logger.info("REQUEST PATH========>{}", request.getPathInfo());
+//
+//        logger.info("REQUEST PATH 2 ONLY========>{}", ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/").path("p")
+//                .toUriString());
+//
+//        StampDutyResponseEntity emeraldResponseEntity = new StampDutyResponseEntity(StampDutyResponseCodes.SUCCESS_CODE, StampDutyResponseCodes.SUCCESS_MESSAGE, stampDutyDTO);
+//        return ResponseEntity.ok(emeraldResponseEntity);
+//    }
 
-        logger.info("REQUEST PATH========>{}", request.getPathInfo());
-
-        logger.info("REQUEST PATH 2 ONLY========>{}", ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/").path("p")
-                .toUriString());
-
-        StampDutyResponseEntity emeraldResponseEntity = new StampDutyResponseEntity(StampDutyResponseCodes.SUCCESS_CODE, StampDutyResponseCodes.SUCCESS_MESSAGE, stampDutyDTO);
-        return ResponseEntity.ok(emeraldResponseEntity);
-    }
 
 
+//    @GetMapping("/download/{id}")
+//    public ResponseEntity<Resource> download(@PathVariable Long id) {
+//        StampDutyFile stampDutyFile = stampDutyFileService.downloadFile(id);
+//
+//        if (stampDutyFile != null) {
+//            return ResponseEntity.ok().contentType(MediaType.parseMediaType(stampDutyFile.getFileType()))
+//                    .header(HttpHeaders.CONTENT_DISPOSITION, stampDutyFile.getFileName())
+//                    .body(new ByteArrayResource(stampDutyFile.getData()));
+//        } else {
+//            return null;
+//        }
+//    }
 
     @GetMapping("/download/{id}")
     public ResponseEntity<Resource> download(@PathVariable Long id) {

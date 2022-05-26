@@ -30,13 +30,25 @@ public class StampDutyFile {
 
     private String fileType;
 
+    private String emailAddress;
+
+    private String tmCode;
+
+    private String month;
+
+    private String year;
+
     @Lob
     private byte[] data;
 
-    public StampDutyFile(String fileName, long fileSize, String fileType, byte[] data) {
+    public StampDutyFile(String fileName, long fileSize, String fileType, String emailAddress, String tmCode, String month, String year, byte[] data) {
         this.fileName = fileName;
         this.fileSize = fileSize;
         this.fileType = fileType;
+        this.emailAddress = emailAddress;
+        this.tmCode = tmCode;
+        this.month = month;
+        this.year = year;
         this.data = data;
     }
 }

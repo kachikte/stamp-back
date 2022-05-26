@@ -86,7 +86,7 @@ public class ReportServiceImpl implements ReportService {
             }
             MultipartFile result = new MockMultipartFile(name,
                     originalFileName, contentType, content);
-            stampDutyDTO = stampDutyFileService.uploadFile(result);
+            stampDutyDTO = stampDutyFileService.uploadFile(result, certificateDataDto.getEmailAddress(), certificateDataDto.getTmCode(), certificateDataDto.getMonth(), certificateDataDto.getYear());
         }
         if (reportFormat.equalsIgnoreCase("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, fileNamePdf);
@@ -103,7 +103,7 @@ public class ReportServiceImpl implements ReportService {
             }
             MultipartFile result = new MockMultipartFile(name,
                     originalFileName, contentType, content);
-            stampDutyDTO = stampDutyFileService.uploadFile(result);
+            stampDutyDTO = stampDutyFileService.uploadFile(result, certificateDataDto.getEmailAddress(), certificateDataDto.getTmCode(), certificateDataDto.getMonth(), certificateDataDto.getYear());
         }
 
         return stampDutyDTO;

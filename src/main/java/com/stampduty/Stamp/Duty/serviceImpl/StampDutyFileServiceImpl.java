@@ -21,14 +21,14 @@ public class StampDutyFileServiceImpl implements StampDutyFileService {
     Logger logger = LoggerFactory.getLogger(StampDutyFileServiceImpl.class);
 
     @Override
-    public StampDutyDTO uploadFile(MultipartFile multipartFile) {
+    public StampDutyDTO uploadFile(MultipartFile multipartFile, String emailAddress, String tmCode, String month, String year) {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
         try {
             if (fileName.contains(".."))
                 throw new StampDutyFileException("File not supported");
             else {
-                StampDutyFile stampDutyFile = new StampDutyFile(fileName, multipartFile.getSize(), multipartFile.getContentType(), multipartFile.getBytes());
+                StampDutyFile stampDutyFile = new StampDutyFile(fileName, multipartFile.getSize(), multipartFile.getContentType(), emailAddress, tmCode, month, year, multipartFile.getBytes());
                 stampDutyFileRepository.save(stampDutyFile);
 
                 logger.info("FILE NAME==========> {}", fileName);
@@ -36,9 +36,9 @@ public class StampDutyFileServiceImpl implements StampDutyFileService {
                 logger.info("FILE TYPE==========> {}", multipartFile.getContentType());
                 logger.info("FILE BYTE==========> {}", multipartFile.getBytes());
 
-                StampDutyDTO emeraldBlogFilesDto = new StampDutyDTO(fileName, multipartFile.getSize(), multipartFile.getContentType(), multipartFile.getBytes());
+                StampDutyDTO stampDutyDTO = new StampDutyDTO(fileName, multipartFile.getSize(), multipartFile.getContentType(), emailAddress, tmCode, month, year, multipartFile.getBytes());
 
-                return  emeraldBlogFilesDto;
+                return  stampDutyDTO;
             }
         } catch (Exception ex) {
             return null;

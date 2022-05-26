@@ -17,4 +17,8 @@ public class CertificateDataDto {
     String dateOfFiling;
     String issuanceDate;
     String originatingOffice;
+    String emailAddress;
+    String tmCode;
+    String month;
+    String year;
 }

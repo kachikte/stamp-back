@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface StampDutyFileService {
 
-    StampDutyDTO uploadFile(MultipartFile multipartFile);
+    StampDutyDTO uploadFile(MultipartFile multipartFile, String emailAddress, String tmCode, String month, String year);
 
     StampDutyFile downloadFile(Long fileId);
 }
