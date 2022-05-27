@@ -102,9 +102,9 @@ public class StampDutyResource {
         logger.info("This is the paymentValue {}", paymentValue);
     }
 
-    @PostMapping("/getReport/{reportFormat}")
-    public StampDutyDTO getReport(@PathVariable String reportFormat, @RequestBody CertificateDataDto certificateDataDto) throws JRException, IOException {
-        return reportService.exportReport(reportFormat, certificateDataDto);
+    @PostMapping("/getReport/")
+    public StampDutyDTO getReport(@RequestBody CertificateDataDto certificateDataDto) throws JRException, IOException {
+        return reportService.exportReport(certificateDataDto);
     }
 
 }

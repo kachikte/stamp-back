@@ -19,5 +19,5 @@ import java.util.*;
 
 public interface ReportService {
 
-    StampDutyDTO exportReport(String reportFormat, CertificateDataDto certificateDataDto) throws IOException, JRException;
+    StampDutyDTO exportReport(CertificateDataDto certificateDataDto) throws IOException, JRException;
 }

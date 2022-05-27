@@ -1,5 +1,6 @@
 package com.stampduty.Stamp.Duty.serviceImpl;
 
+import com.stampduty.Stamp.Duty.dto.DownloadReportDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.entity.StampDutyFile;
 import com.stampduty.Stamp.Duty.exceptions.StampDutyFileException;
@@ -46,8 +47,13 @@ public class StampDutyFileServiceImpl implements StampDutyFileService {
     }
 
 
+//    @Override
+//    public StampDutyFile downloadFile(Long fileId) {
+//        return stampDutyFileRepository.findById(fileId).orElse(null);
+//    }
+
     @Override
-    public StampDutyFile downloadFile(Long fileId) {
-        return stampDutyFileRepository.findById(fileId).orElse(null);
+    public StampDutyFile downloadFile(String emailAddress, String tmCode, String month, String year) {
+        return stampDutyFileRepository.getStampDutyFileByParams(emailAddress, tmCode, month, year);
     }
 }

@@ -1,5 +1,6 @@
 package com.stampduty.Stamp.Duty.resource;
 
+import com.stampduty.Stamp.Duty.dto.DownloadReportDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.entity.StampDutyFile;
 import com.stampduty.Stamp.Duty.service.StampDutyFileService;
@@ -57,9 +58,9 @@ public class StampDutyFileResource {
 //        }
 //    }
 
-    @GetMapping("/download/{id}")
-    public ResponseEntity<Resource> download(@PathVariable Long id) {
-        StampDutyFile stampDutyFile = stampDutyFileService.downloadFile(id);
+    @GetMapping("/downloadReport/")
+    public ResponseEntity<Resource> download(@RequestParam("emailAddress") String emailAddress, @RequestParam("tmCode") String tmCode, @RequestParam("month") String month, @RequestParam("year") String year) {
+        StampDutyFile stampDutyFile = stampDutyFileService.downloadFile(emailAddress, tmCode, month, year);
 
         if (stampDutyFile != null) {
             return ResponseEntity.ok().contentType(MediaType.parseMediaType(stampDutyFile.getFileType()))

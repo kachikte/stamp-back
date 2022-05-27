@@ -1,5 +1,6 @@
 package com.stampduty.Stamp.Duty.service;
 
+import com.stampduty.Stamp.Duty.dto.DownloadReportDto;
 import com.stampduty.Stamp.Duty.dto.StampDutyDTO;
 import com.stampduty.Stamp.Duty.entity.StampDutyFile;
 import org.springframework.stereotype.Service;
@@ -10,5 +11,5 @@ public interface StampDutyFileService {
 
     StampDutyDTO uploadFile(MultipartFile multipartFile, String emailAddress, String tmCode, String month, String year);
 
-    StampDutyFile downloadFile(Long fileId);
+    StampDutyFile downloadFile(String emailAddress, String tmCode, String month, String year);
 }

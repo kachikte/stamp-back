@@ -35,7 +35,7 @@ public class ReportServiceImpl implements ReportService {
 
 
     @Override
-    public StampDutyDTO exportReport(String reportFormat, CertificateDataDto certificateDataDto) throws IOException, JRException {
+    public StampDutyDTO exportReport(CertificateDataDto certificateDataDto) throws IOException, JRException {
 
         //Content types
 
@@ -70,7 +70,7 @@ public class ReportServiceImpl implements ReportService {
         Map<String, Object> parameter = new HashMap<>();
         parameter.put("createdBy", "Onochie-okeke Onyekachi S.");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
-        if (reportFormat.equalsIgnoreCase("html")) {
+        if (certificateDataDto.getReportType().equalsIgnoreCase("html")) {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, fileNameHtml);
 
             File fileHtml = new File(fileNameHtml);
@@ -88,7 +88,7 @@ public class ReportServiceImpl implements ReportService {
                     originalFileName, contentType, content);
             stampDutyDTO = stampDutyFileService.uploadFile(result, certificateDataDto.getEmailAddress(), certificateDataDto.getTmCode(), certificateDataDto.getMonth(), certificateDataDto.getYear());
         }
-        if (reportFormat.equalsIgnoreCase("pdf")) {
+        if (certificateDataDto.getReportType().equalsIgnoreCase("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, fileNamePdf);
             File filePdf = new File(fileNamePdf);
             Path pathPdf = Paths.get(fileNamePdf);
